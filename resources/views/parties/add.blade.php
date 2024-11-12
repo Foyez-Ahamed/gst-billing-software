@@ -20,26 +20,7 @@
         <div class="card">
             <div class="card-body">
 
-            <!-- success message -->
-             @if (session('status'))
-
-             <div class="alert alert-success"> {{session('status') }} </div>
-             
-             @endif
-
-             @if (count($errors))
-
-             <div class="alert alert-danger"> 
-                <strong> Validation Erros: Please check the following issue </strong>
-
-                <ul>
-                    @foreach ($errors->all() as $error )
-                    <li> {{$error}} </li>
-                    @endforeach
-                </ul>
-             </div>
-             
-             @endif
+                @include('include.alert')
 
                 <h4 class="header-title text-uppercase"> Basic Info</h4>
                 <hr>
@@ -197,7 +178,9 @@
                     <br>
 
                     <button class="btn btn-primary" type="submit">Submit</button>
+
                     <button class="btn btn-secondary" type="reset">Reset</button>
+                    
                 </form>
             </div>
         </div>

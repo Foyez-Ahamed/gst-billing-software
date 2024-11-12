@@ -49,3 +49,7 @@ Route::get('createBill', [GstBillingController::class, 'createBill'])->name('cre
 Route::get('manageBill', [GstBillingController::class, 'manageBill'])->name('manageBill');
 
 Route::get('print', [GstBillingController::class, 'print'])->name('print');
+
+
+// create gst-bill route //
+Route::post('create_gst_bill', [GstBillingController::class, 'create_gst_bill'])->name('create_gst_bill');

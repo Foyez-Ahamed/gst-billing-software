@@ -22,6 +22,8 @@ class PartyController extends Controller
             'address' => 'required',
             'account_holder_name' => 'required',
             'account_no' => 'required',
+            'bank_name' => 'required',
+            'branch_address' => 'required'
         ]);
        
         $param = $request->all();

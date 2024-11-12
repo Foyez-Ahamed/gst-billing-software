@@ -19,4 +19,8 @@ class Party extends Model
 
     // 3.Fillable columns
     protected $fillable = array('full_name', 'party_type', 'phone_no', 'city', 'address', 'account_holder_name', 'account_no', 'bank_name', 'ifsc_code', 'branch_address');
+
+    // for database table relation function
+    
+
 }
