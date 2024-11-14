@@ -54,32 +54,30 @@
                                 Billed to</h5>
                         </div>
                     </b>
-                    <div class="row pl-2 pt-1">
+                    <div class="row pl-2">
                         <div class="col-12 d-flex justiy-content-start">
-                            <label for="">Name : </label>
-                            <input type="text" style="border: none; line-height: -10;">
+                            <label for="">Name: </label>
+                            <span class="ml-2"> {{ $bill->party->full_name }} </span>
                         </div>
                     </div>
                     <div class="row pl-2">
                         <div class="col-12 d-flex justiy-content-start">
                             <label for="">Address : </label>
-                            <span></span>
+                            <span class="ml-2"> {{ $bill->party->address }} </span>
                         </div>
                     </div>
                     <div class="row pl-2">
                         <div class="col-12 d-flex justiy-content-start">
                             <label for="">Phone : </label>
-                            <span></span>
+                            <span class="ml-2"> {{ $bill->party->phone_no }} </span>
                         </div>
                     </div>
                     <div class="row pl-2 pb-1">
                         <div class="col-9 d-flex justiy-content-start">
-                            <label for="">State : </label>
-                            <span></span>
+                            <label for="">AC holder : </label>
+                            <span class="ml-2"> {{ $bill->party->account_holder_name }} </span>
                         </div>
-                        <div class="col-3 d-flex px-1">
-                            <label for="">State Code | <span><b></b></span> </label>
-                        </div>
+                       
                     </div>
                 </div>
                 <div class="col-md-6 border p-0">
@@ -88,33 +86,21 @@
                             <h5>Invoice Details</h5>
                         </div>
                     </b>
-                    <div class="row pl-2 pt-1">
-                        <div class="col-12 d-flex justiy-content-start">
-                            <label for="">Revrce Charge : </label>
-                            <span></span>
-                        </div>
-                    </div>
+                  
                     <div class="row pl-2">
                         <div class="col-12 d-flex justiy-content-start">
                             <label for="">Invoice No : </label>
-                            <span></span>
+                            <span class="ml-2"> {{ $bill->invoice_no }} </span>
                         </div>
                     </div>
+
                     <div class="row pl-2">
                         <div class="col-12 d-flex justiy-content-start">
                             <label for="">Invoice Date : </label>
-                            <span></span>
+                            <span class="ml-2"> {{ $bill->invoice_date }} </span>
                         </div>
                     </div>
-                    <div class="row pl-2 pb-1">
-                        <div class="col-9 d-flex justiy-content-start">
-                            <label for="">State : </label>
-                            <span></span>
-                        </div>
-                        <div class="col-3 d-flex px-1">
-                            <label for="">State Code | <span><b>08</b></span> </label>
-                        </div>
-                    </div>
+                  
                 </div>
             </div>
             <!-- end row -->

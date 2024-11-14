@@ -21,6 +21,8 @@ class Party extends Model
     protected $fillable = array('full_name', 'party_type', 'phone_no', 'city', 'address', 'account_holder_name', 'account_no', 'bank_name', 'ifsc_code', 'branch_address');
 
     // for database table relation function
-    
+    public function gstBills(){
+        return $this->hasMany(GstBill::class);
+    }
 
 }

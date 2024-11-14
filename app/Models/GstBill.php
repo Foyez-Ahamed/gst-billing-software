@@ -34,5 +34,7 @@ class GstBill extends Model
     );
 
     // for database table ralation function
-    
+    public function party(){
+        return $this->belongsTo(Party::class);
+    }
 }

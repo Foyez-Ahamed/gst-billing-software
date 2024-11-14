@@ -14,6 +14,7 @@
     <!-- end page title -->
     <div class="row">
         <div class="col-12">
+            @include('include.alert')
             <div class="card-box">
                 <a href="{{ route('createBill') }}" class="btn btn-sm btn-blue waves-effect waves-light float-right">
                     <i class="mdi mdi-plus-circle"></i> Create New Bill
@@ -54,26 +55,41 @@
                     </thead>
 
                     <tbody>
+
+                        @if(count($bills))
+                            
+                    
+
+                        @foreach ( $bills as $index => $bill )
+                        
+                        
                         <tr>
-                            <td><b>#1256</b></td>
+                            <td><b>{{ $index+1 }}</b></td>
                             <td>
-                                #5
+                                {{ $bill->invoice_no }}
                             </td>
 
                             <td>
-                                Joh Doe
-                            </td>
+                            <ul class="list-unstyled">
 
-                            <td>
-                                <ul class="list-unstyled">
-                                    <li><b>Total Amount :</b><span> 555</span></li>
-                                    <li><b>TAX :</b><span> 55</span></li>
-                                    <li><b>Net Amount :</b><span> 55</span></li>
+                                    <li><b>Name :</b> <span> {{ $bill->party->full_name }} </span></li>
+
+                                    <li><b>Number :</b><span> {{ $bill->party->phone_no }} </span></li>
+
+                                   
                                 </ul>
                             </td>
 
                             <td>
-                                01/09/2023
+                                <ul class="list-unstyled">
+                                    <li><b>Total Amount :</b><span> {{ $bill->total_amount }} </span></li>
+                                    <li><b>TAX :</b><span> {{ $bill-> tax_amount }}</span></li>
+                                    <li><b>Net Amount :</b><span> {{ $bill->net_amount }} </span></li>
+                                </ul>
+                            </td>
+
+                            <td>
+                               {{ date("d-m-y", strtotime($bill->invoice_date)) }}
                             </td>
                             <td>
                                 <div class="btn-group dropdown">
@@ -81,19 +97,33 @@
                                         class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm"
                                         data-toggle="dropdown" aria-expanded="false"><i
                                             class="mdi mdi-dots-horizontal"></i></a>
+
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <button type="button" class="dropdown-item" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"><i
                                                 class="mdi mdi-alert-octagon-outline mr-2 text-muted font-18 vertical-middle"></i>Detail</button>
-                                        <a class="dropdown-item" href="#"><i
+
+                                        <a class="dropdown-item" href="{{ route('delete',['gst_bills', $bill->id ]) }}"><i
                                                 class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Delete</a>
-                                        <a class="dropdown-item" href="{{ route('print') }}"><i
+
+                                        <a class="dropdown-item" href="{{ route('print', $bill->id) }}"><i
                                                 class="mdi mdi-printer mr-2 text-muted font-18 vertical-middle"></i>
                                             Print</a>
                                     </div>
                                 </div>
                             </td>
                         </tr>
+
+                        @endforeach
+
+                        @else
+
+                        <tr>
+                            <td colspan="6" style="color: red">No record found</td>
+                        </tr>
+
+                        @endif
+
                     </tbody>
                 </table>
             </div><!-- end col -->

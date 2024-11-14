@@ -20,11 +20,17 @@ class GstBillingController extends Controller
     // gst-billing index file all relation logic will be shared here //
     public function manageBill(){
 
-        return view('gstBilling.manage_bill');
+        $bills = GstBill::where('is_deleted', 0)->with('party')->get();
+
+        return view('gstBilling.manage_bill', compact('bills'));
     }
     
-    public function print(){
-        return view('gstBilling.print');
+    public function print($id){
+
+        $data['bill'] = GstBill::where('id', $id)->with('party')->first();
+        
+        return view('gstBilling.print', $data);
+
     }
 
 
@@ -52,5 +58,8 @@ class GstBillingController extends Controller
         return redirect()-> route('manageBill')->withStatus('Bill created successfully');
        
     }
+
+
+    
 
 }

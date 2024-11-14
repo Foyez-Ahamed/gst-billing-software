@@ -128,7 +128,17 @@ class AppController extends Controller
         return view('dashboard');
         
     }
-    
-    
 
+
+    // function for soft delete 
+
+    public function delete($table, $id){
+        
+        $param = array( 'is_deleted' => 1 );
+
+        DB::table($table)->where('id', $id)->update($param);
+
+        return redirect()->back()->withStatus('Record deleted successfully');
+
+    }
 }

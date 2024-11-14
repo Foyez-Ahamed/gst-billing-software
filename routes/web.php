@@ -48,8 +48,15 @@ Route::get('createBill', [GstBillingController::class, 'createBill'])->name('cre
 
 Route::get('manageBill', [GstBillingController::class, 'manageBill'])->name('manageBill');
 
-Route::get('print', [GstBillingController::class, 'print'])->name('print');
+Route::get('print/{id}', [GstBillingController::class, 'print'])->name('print');
 
 
 // create gst-bill route //
 Route::post('create_gst_bill', [GstBillingController::class, 'create_gst_bill'])->name('create_gst_bill');
+
+
+// for soft delete route //
+Route::get('delete/{table}{id}', [AppController::class, 'delete'])->name('delete');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
